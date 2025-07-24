@@ -1,0 +1,20 @@
+@use 'variable';
+
+.header {
+    padding-top: 36px;
+
+    &-inner {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 60px;
+
+        li {
+            padding: 10px;
+
+            a {
+                color: variable.$black;
+            }
+        }
+    }
+
+}

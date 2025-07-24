@@ -1,0 +1,30 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+@font-face {
+	font-family: 'PPMondwest';
+	src: url('/fonts/ppmondwest-regular.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ppNeuebit';
+	src: url('/fonts/ppneuebit-bold.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+.en {
+	&1 {
+		font-family: 'PPMondwest', sans-serif;
+	}
+
+	&2 {
+		font-family: 'ppNeuebit', sans-serif;
+	}
+}
