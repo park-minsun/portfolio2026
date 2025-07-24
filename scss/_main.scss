@@ -1,0 +1,34 @@
+@use 'variable' as *;
+@use 'function' as *;
+
+.main {
+	&-cont {
+		width: 100%;
+		overflow: hidden;
+	}
+  &-visual {
+		position: relative;
+		width: 100%;
+		height: 100vh;
+
+    .star {
+			position: absolute;
+			opacity: .5;
+
+			&.pink {
+					left: rem(1);
+					bottom: rem(1);
+			}
+				&.blue {
+					right: rem(1);
+					top: 0;
+					bottom: rem(4);
+			}
+    }
+  }
+    
+}
+
+.sec1 {
+    height: 100vh;
+}

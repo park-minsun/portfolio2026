@@ -1,7 +1,16 @@
-@use 'variable';
+@use 'variable' as *;
+@use 'function' as *;
+
+html {font-size: 62.5%;}
+body {font-size: 1rem; position: relative;}
 
 .header {
-    padding-top: 36px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-top: rem(36);
+    z-index: 9;
 
     &-inner {
         display: flex;
@@ -12,7 +21,40 @@
             padding: 10px;
 
             a {
-                color: variable.$black;
+                position: relative;
+                display: block;
+                color: $black;
+                font-size: rem(16);
+                overflow: hidden;
+
+                &::before {
+                    content: attr(data-text); 
+                    position: absolute; 
+                    top: 0; 
+                    left: 0; 
+                    width: 100%; 
+                    height: 100%; 
+                    opacity: 0; 
+                    transform: translate(0,-100%); 
+                    transition: all .3s;
+                }
+                &:hover {
+                    &::before {
+                        opacity: 1; 
+                        transform: translate(0,0);
+
+                    }
+
+                    span {
+                        opacity: 0; 
+                        transform: translateY(100%);
+                    }
+                }
+
+                span {
+                    display: block; 
+                    transition: all .3s;
+                }
             }
         }
     }
