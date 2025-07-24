@@ -30,5 +30,30 @@
 }
 
 .sec1 {
-    height: 100vh;
+	height: 400vh;
+
+		.pin-wrap {
+			width: 100%;
+			height: 100vh;
+			max-width: 1600px;
+			margin: 0 auto;
+			display: flex;
+			justify-content: space-between;
+
+			.left {
+				flex: 1;
+				position: relative;
+			}
+			.right {
+				flex: 1;
+				position: relative;
+				overflow: hidden;
+
+				.text {
+					position: absolute;
+					font-size: rem(40);
+					opacity: 0;
+				}
+			}
+		}
 }

@@ -40,6 +40,25 @@
 			</div>
 
       <section class="sec1">
+        <div class="pin-wrap">
+          <div class="left">
+            <img src="./images/me.png" alt="">
+          </div>
+          <div class="right">
+            <div class="text text1">
+              <p>안녕</p>
+            </div>
+            <div class="text text2">
+              <p>반가워</p>
+            </div>
+            <div class="text text3">
+              <p>굿바이</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section class="sec2" style="height: 100vh;">
 
       </section>
 		</div>
@@ -65,6 +84,38 @@
         duration: 0.5,
         ease: "power2.out"
       });
+    });
+
+    // sec1 스크롤 트리거
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 텍스트들 모음
+    const texts = gsap.utils.toArray(".right .text");
+
+    // TL 생성
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".sec1 .pin-wrap",
+        start: "top top",   // 화면 상단에 닿으면 시작
+        end: "+=300%",      // 스크롤 3배 길이 동안 진행
+        scrub: true,
+        pin: true,          // pin-wrap 고정
+        anticipatePin: 1
+      }
+    });
+
+    // 각 text를 순서대로 보여주고 숨기기
+    texts.forEach((text, i) => {
+      tl.to(text, {
+        opacity: 1,
+        duration: 0.5
+      }, "+=0.5"); // 약간의 간격
+      
+      tl.to(text, {
+        opacity: 0,
+        duration: 0.5
+      }, "+=0.5"); // 사라지면서 다음으로 넘어감
     });
   </script>
 </body>
