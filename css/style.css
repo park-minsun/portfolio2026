@@ -199,6 +199,11 @@ body {
   position: relative;
 }
 
+html, body {
+  overscroll-behavior: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .header {
   position: absolute;
   top: 0;
@@ -422,4 +427,10 @@ body {
   height: 100%;
   background: #111 url(/images/ico_cursor_search.svg) no-repeat center;
   border-radius: 50%;
+}
+.main-cont .sec3 canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: auto;
 }/*# sourceMappingURL=style.css.map */

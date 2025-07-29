@@ -11,6 +11,9 @@
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+  <script src="/js/main.js" defer></script>
 </head>
 
 <body>
@@ -130,191 +133,11 @@
         </ul>
       </section>
 
-      <section class="sec3" style="height: 100vh;"></section>
+      <section class="sec3" style="height: 100vh;">
+        <canvas id="world"></canvas>
+      </section>
 		</div>
 	</div>
-
-  <script>
-
-    // 메인 비주얼 별 마우스 모션
-  const mainVisual = document.querySelector(".main-visual");
-
-  mainVisual.addEventListener("mousemove", (e) => {
-    let x = (e.clientX / window.innerWidth - 1) * 2;
-    let y = (e.clientY / window.innerHeight - 1) * 4;
-
-    gsap.to(".star.pink", {
-      x: x * 100,
-      y: y * 60,
-      duration: 1,
-      ease: "power2.out"
-    });
-
-      gsap.to(".star.blue", {
-        x: -x * 100,
-        y: -y * 60,
-        duration: 1,
-        ease: "power2.out"
-      });
-    });
-
-    // 글자 애니메이션
-    window.addEventListener('DOMContentLoaded', () => {
-    gsap.to(".ani-text .year, .ani-text .txt1", {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      ease: "power3.out",
-      delay: 0.2
-    });
-
-    gsap.to(".ani-text .txt2", {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      ease: "power3.out",
-      delay: 1.0
-    });
-  });
-
-    // sec1 스크롤 트리거
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    // 텍스트들 모음
-    const texts = gsap.utils.toArray(".right .text");
-
-    // TL 생성
-    let tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".sec1 .pin-wrap",
-        start: "top top",  
-        end: "+=300%",
-        scrub: true,
-        pin: true, 
-        anticipatePin: 1
-      }
-    });
-
-    // 각 text를 순서대로 보여주고 숨기기
-    texts.forEach((text, i) => {
-      tl.to(text, {
-        opacity: 1,
-        duration: 0.5
-      }, "+=0.5"); // 약간의 간격
-      
-      tl.to(text, {
-        opacity: 0,
-        duration: 0.5
-      }, "+=0.5"); // 사라지면서 다음으로 넘어감
-    });
-
-   // 1. Lottie 애니메이션 객체 생성
-  const lottie1 = lottie.loadAnimation({
-    container: document.getElementById('lottie1'),
-    renderer: 'svg',
-    loop: false,
-    autoplay: false,
-    path: '/images/lottie/vector1.json'
-  });
-
-  const lottie2 = lottie.loadAnimation({
-    container: document.getElementById('lottie2'),
-    renderer: 'svg',
-    loop: false,
-    autoplay: false,
-    path: '/images/lottie/vector2.json'
-  });
-
-  const lottie3 = lottie.loadAnimation({
-    container: document.getElementById('lottie3'),
-    renderer: 'svg',
-    loop: false,
-    autoplay: false,
-    path: '/images/lottie/vector3.json'
-  });
-
-  // 2. ScrollTrigger로 순차 재생
-  ScrollTrigger.create({
-    trigger: '.sec1 .pin-wrap',
-    start: 'top 20%',
-    once: true,
-    onEnter: () => {
-      lottie1.play();
-      setTimeout(() => lottie2.play(), 500);  // 0.5초 후 실행
-      setTimeout(() => lottie3.play(), 1000); // 1초 후 실행
-    }
-  });
-
-
-  // 가로스크롤
-
-  	let list = gsap.utils.toArray('.work-list li');
-
-    let scrollTween = gsap.to(list, {
-			xPercent: -100 * (list.length - 1),
-			ease: 'none',
-			scrollTrigger: { 
-				trigger: '.sec2',
-				pin: true,
-				scrub: 1,
-				start: 'center center',
-				end: '200%',
-				//markers: true,
-			}
-		});
-
-    // work 커서 모션
-    (function () {
-      const cursor = document.querySelector('.cursor');
-
-      if (!cursor) return;
-
-      // 커서 위치
-      gsap.set(cursor, {
-        xPercent: -50,
-        yPercent: -130,
-      });
-
-      // 마우스 움직임에 따라 커서 이동
-      document.addEventListener('pointermove', (e) => {
-        gsap.to(cursor, {
-          x: e.clientX,
-          y: e.clientY,
-          duration: 0.3,
-          ease: 'power2.out'
-        });
-      });
-
-      function showCursor() {
-        gsap.to(cursor, {
-          opacity: 1,
-          scale: 1,
-          duration: 0.3,
-          ease: 'power2.out'
-        });
-      }
-
-      function hideCursor() {
-        gsap.to(cursor, {
-          opacity: 0,
-          scale: 0.3,
-          duration: 0.3,
-          ease: 'power2.in'
-        });
-      }
-
-      // hover 시 효과 적용
-      document.querySelectorAll('.work-list a').forEach((link) => {
-        link.addEventListener('mouseenter', showCursor);
-        link.addEventListener('mouseleave', hideCursor);
-      });
-
-    })();
-
-
-
-  </script>
 </body>
 
 </html>
