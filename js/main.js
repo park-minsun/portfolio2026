@@ -249,7 +249,7 @@
             angle: Math.random() * 0.4 - 0.2, // 약간 기울이기
           }),
           text: 'GSAP',
-          color: '#50f150ff'
+          color: '#50f150'
         },
         {
           shape: Bodies.rectangle(section * 2, 200, 500 * scale, 200 * scale, {
@@ -257,18 +257,18 @@
             angle: Math.random() * 0.4 - 0.2,
           }),
           text: 'HTML',
-          color: '#ff5151ff'
+          color: '#ff5151'
         },
         {
-          shape: Bodies.rectangle(section * 3, 200, 500 * scale, 200 * scale, {
+          shape: Bodies.rectangle(section * 2, 200, 500 * scale, 200 * scale, {
             chamfer: { radius: 100 * scale },
             angle: Math.random() * 0.4 - 0.2,
           }),
           text: 'CSS',
-          color: '#00a5f1ff'
+          color: '#00a5f1'
         },
         {
-          shape: Bodies.rectangle(section * 4, 200, 500 * scale, 200 * scale, {
+          shape: Bodies.rectangle(section * 1, 200, 500 * scale, 200 * scale, {
             chamfer: { radius: 100 * scale },
             angle: Math.random() * 0.4 - 0.2,
           }),
@@ -276,12 +276,12 @@
           color: '#ff8fab'
         },
         {
-          shape: Bodies.rectangle(section * 2, 200, 500 * scale, 200 * scale, {
+          shape: Bodies.rectangle(section * 3, 200, 500 * scale, 200 * scale, {
             chamfer: { radius: 100 * scale },
             angle: Math.random() * 0.4 - 0.2,
           }),
           text: 'JS',
-          color: '#ffee00ff'
+          color: '#ffee00'
         },
         {
           shape: Bodies.rectangle(section * 3, 200, 500 * scale, 200 * scale, {
@@ -289,26 +289,26 @@
             angle: Math.random() * 0.4 - 0.2,
           }),
           text: 'figma',
-          color: '#d67cffff'
-        },
-        {
-          shape: Bodies.rectangle(section * 4, 200, 500 * scale, 200 * scale, {
-            chamfer: { radius: 100 * scale },
-            angle: Math.random() * 0.4 - 0.2,
-          }),
-          text: 'Photoshop',
-          color: '#2f78ffff'
+          color: '#d67cff'
         },
         {
           shape: Bodies.rectangle(section * 1, 200, 500 * scale, 200 * scale, {
             chamfer: { radius: 100 * scale },
             angle: Math.random() * 0.4 - 0.2,
           }),
-          text: 'Illustration',
-          color: '#ffae00ff'
+          text: 'Photoshop',
+          color: '#2f78ff'
         },
         {
           shape: Bodies.rectangle(section * 2, 200, 500 * scale, 200 * scale, {
+            chamfer: { radius: 100 * scale },
+            angle: Math.random() * 0.4 - 0.2,
+          }),
+          text: 'Illustrator',
+          color: '#ffae00ff'
+        },
+        {
+          shape: Bodies.rectangle(section * 4, 200, 500 * scale, 200 * scale, {
             chamfer: { radius: 100 * scale },
             angle: Math.random() * 0.4 - 0.2,
           }),

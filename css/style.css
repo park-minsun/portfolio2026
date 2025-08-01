@@ -345,14 +345,14 @@ html, body {
   font-weight: 600;
   opacity: 0;
 }
-.main-cont .sec2 {
-  position: relative;
-  height: 100vh;
-}
-.main-cont .sec2 .title {
+.main-cont .title {
   font-size: 4rem;
   font-weight: 600;
   padding: 5rem 6rem;
+}
+.main-cont .sec2 {
+  position: relative;
+  height: 100vh;
 }
 .main-cont .sec2 .work-list {
   display: flex;

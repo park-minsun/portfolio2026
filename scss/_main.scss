@@ -112,15 +112,16 @@
       }
     }
 
-    .sec2 {
-      position: relative;
-      height: 100vh;
-
-      .title {
+    .title {
         font-size: rem(40);
         font-weight: 600;
         padding: rem(50) rem(60);
       }
+
+    .sec2 {
+      position: relative;
+      height: 100vh;
+
       .work-list {
         display: flex;
         align-items: center;
