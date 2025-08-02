@@ -28,6 +28,14 @@ html, body {
 
       .logo {
         display: block;
+
+        &.hide {
+          @include media-down(sm) {
+            width: 0;
+            opacity: 0;
+            visibility: hidden;
+          }
+        }
         img {
           width: 100%;
           @include transition;
@@ -36,9 +44,7 @@ html, body {
         @include media-down(sm) {
           width: rem(50);
         }
-        &.hide {
-          display: none;
-        }
+        
       }
 
       nav{
@@ -84,6 +90,18 @@ html, body {
             display: block; 
             transition: all .3s;
           }
+
+          .ico-blank {
+            display: inline-block;
+            width: rem(14);
+            height: rem(16);
+          }
+        }
+
+        &:last-child a {
+          display: inline-flex;
+          align-items: start;
+          gap: 5px;
         }
       }
     }
@@ -144,6 +162,10 @@ html, body {
 
 }
 
+.ico-blank {
+  background: url(/images/ico_blank.svg)no-repeat center 2px / contain;
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -158,12 +180,13 @@ html, body {
   background: rgba(255, 255, 255, 0.8);
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
-  
-  &.open {
+
+   @include media-down(sm) {
+      &.open {
     opacity: .9;
     visibility: visible;
     height: 100%;
-    
+ 
     li {
       animation: fadeInRight .5s ease forwards;
       animation-delay: .35s;
@@ -179,6 +202,9 @@ html, body {
       }
     }
   }
+    }
+  
+  
   nav {
     position: relative;
     height: 70%;
@@ -223,6 +249,16 @@ html, body {
           height: rem(2);
           background: $black;
           transition: .35s;
+        }
+      }
+
+      &:last-child a {
+        display: inline-flex;
+
+        .ico-blank {
+          width: rem(20);
+          height: rem(20);
+          background-position: center;
         }
       }
     }

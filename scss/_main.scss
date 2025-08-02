@@ -310,7 +310,7 @@
                 display: inline-block;
                 width: rem(20);
                 height: rem(20);
-                background: url(/images/ico_blank.svg)no-repeat center / contain;
+                background: url(/images/ico_arrow.svg)no-repeat center / contain;
 
                 @include media-down(sm) {
                   width: rem(16);

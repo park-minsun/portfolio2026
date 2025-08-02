@@ -4,6 +4,7 @@ $(document).ready(function() {
     $(this).toggleClass('active');
     $('.header .logo').toggleClass('hide');
     $('#overlay').toggleClass('open');
+
  });
 
 

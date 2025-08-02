@@ -225,6 +225,13 @@ html, body {
 .header-inner .logo {
   display: block;
 }
+@media (max-width: 767.98px) {
+  .header-inner .logo.hide {
+    width: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 .header-inner .logo img {
   width: 100%;
   transition: all 0.3s ease-in-out;
@@ -233,9 +240,6 @@ html, body {
   .header-inner .logo {
     width: 5rem;
   }
-}
-.header-inner .logo.hide {
-  display: none;
 }
 @media (max-width: 767.98px) {
   .header-inner nav {
@@ -274,6 +278,16 @@ html, body {
 .header-inner li a span {
   display: block;
   transition: all 0.3s;
+}
+.header-inner li a .ico-blank {
+  display: inline-block;
+  width: 1.4rem;
+  height: 1.6rem;
+}
+.header-inner li:last-child a {
+  display: inline-flex;
+  align-items: start;
+  gap: 5px;
 }
 .header .menu-btn {
   display: none;
@@ -322,6 +336,10 @@ html, body {
   top: 22px;
 }
 
+.ico-blank {
+  background: url(/images/ico_blank.svg) no-repeat center 2px/contain;
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -337,23 +355,25 @@ html, body {
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
 }
-.overlay.open {
-  opacity: 0.9;
-  visibility: visible;
-  height: 100%;
-}
-.overlay.open li {
-  animation: fadeInRight 0.5s ease forwards;
-  animation-delay: 0.35s;
-}
-.overlay.open li:nth-of-type(2) {
-  animation-delay: 0.4s;
-}
-.overlay.open li:nth-of-type(3) {
-  animation-delay: 0.45s;
-}
-.overlay.open li:nth-of-type(4) {
-  animation-delay: 0.5s;
+@media (max-width: 767.98px) {
+  .overlay.open {
+    opacity: 0.9;
+    visibility: visible;
+    height: 100%;
+  }
+  .overlay.open li {
+    animation: fadeInRight 0.5s ease forwards;
+    animation-delay: 0.35s;
+  }
+  .overlay.open li:nth-of-type(2) {
+    animation-delay: 0.4s;
+  }
+  .overlay.open li:nth-of-type(3) {
+    animation-delay: 0.45s;
+  }
+  .overlay.open li:nth-of-type(4) {
+    animation-delay: 0.5s;
+  }
 }
 .overlay nav {
   position: relative;
@@ -396,6 +416,14 @@ html, body {
   height: 0.2rem;
   background: #111;
   transition: 0.35s;
+}
+.overlay ul li:last-child a {
+  display: inline-flex;
+}
+.overlay ul li:last-child a .ico-blank {
+  width: 2rem;
+  height: 2rem;
+  background-position: center;
 }
 
 .top-btn {
@@ -820,7 +848,7 @@ html, body {
   display: inline-block;
   width: 2rem;
   height: 2rem;
-  background: url(/images/ico_blank.svg) no-repeat center/contain;
+  background: url(/images/ico_arrow.svg) no-repeat center/contain;
 }
 @media (max-width: 767.98px) {
   .main-cont .sec2 .work-list li a .txt .arrow {
