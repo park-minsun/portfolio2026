@@ -1,10 +1,11 @@
 @use 'variable' as *;
 @use 'function' as *;
+@use 'mixin' as *;
 
 html {font-size: 62.5%;}
 body {font-size: 1rem; position: relative;}
 html, body {
-    overscroll-behavior: auto;
+  overscroll-behavior: auto;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -14,53 +15,240 @@ html, body {
     left: 0;
     width: 100%;
     padding-top: rem(36);
-    z-index: 9;
+    z-index: 10;
 
     &-inner {
-        display: flex;
-        justify-content: space-between;
-        padding: 0 60px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 rem(60);
 
-        li {
-            padding: 10px;
+      @include media-down(md) {
+        padding: 0 rem(20);
+      }
 
-            a {
-                position: relative;
-                display: block;
-                color: $black;
-                font-size: rem(16);
-                overflow: hidden;
-
-                &::before {
-                    content: attr(data-text); 
-                    position: absolute; 
-                    top: 0; 
-                    left: 0; 
-                    width: 100%; 
-                    height: 100%; 
-                    opacity: 0; 
-                    transform: translate(0,-100%); 
-                    transition: all .3s;
-                }
-                &:hover {
-                    &::before {
-                        opacity: 1; 
-                        transform: translate(0,0);
-
-                    }
-
-                    span {
-                        opacity: 0; 
-                        transform: translateY(100%);
-                    }
-                }
-
-                span {
-                    display: block; 
-                    transition: all .3s;
-                }
-            }
+      .logo {
+        display: block;
+        img {
+          width: 100%;
+          @include transition;
         }
+
+        @include media-down(sm) {
+          width: rem(50);
+        }
+        &.hide {
+          display: none;
+        }
+      }
+
+      nav{
+        @include media-down(sm) {
+          display: none;
+        }
+      }
+      
+
+      li {
+          padding: rem(10);
+        a {
+          position: relative;
+          display: block;
+          color: $black;
+          font-size: rem(16);
+          overflow: hidden;
+
+          &::before {
+            content: attr(data-text); 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            opacity: 0; 
+            transform: translate(0,-100%); 
+            transition: all .3s;
+          }
+          &:hover {
+            &::before {
+              opacity: 1; 
+              transform: translate(0,0);
+            }
+
+            span {
+              opacity: 0; 
+              transform: translateY(100%);
+            }
+          }
+
+          span {
+            display: block; 
+            transition: all .3s;
+          }
+        }
+      }
     }
 
+  .menu-btn {
+    display: none;
+    position: fixed;
+    top: 5%;
+    right: rem(20);
+    height: rem(24);
+    width: rem(35);
+    cursor: pointer;
+    z-index: 100;
+    transition: opacity .25s ease;
+    z-index: 99;
+
+    @include media-down(sm) {
+      display: block;
+    }
+    
+    &:hover {
+      opacity: .7;
+    }
+    
+    &.active {
+      .top {
+        transform: translateY(11px) translateX(0) rotate(45deg);
+      }
+      .middle {
+        opacity: 0;
+      }
+      
+      .bottom {
+        transform: translateY(-11px) translateX(0) rotate(-45deg);
+      }
+    }
+  
+    span {
+    background: $black;
+    border: none;
+    height: rem(2);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition:  all .35s ease;
+    cursor: pointer;
+      
+      &:nth-of-type(2) {
+        top: 11px;
+      }
+      
+      &:nth-of-type(3) {
+        top: 22px;
+      }
+    }
+  }  
+
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .35s, visibility .35s, height .35s;
+  overflow: hidden;
+  z-index: 9;
+  background: rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  
+  &.open {
+    opacity: .9;
+    visibility: visible;
+    height: 100%;
+    
+    li {
+      animation: fadeInRight .5s ease forwards;
+      animation-delay: .35s;
+      
+      &:nth-of-type(2) {
+        animation-delay: .4s;
+      }
+      &:nth-of-type(3) {
+        animation-delay: .45s;
+      }
+      &:nth-of-type(4) {
+        animation-delay: .50s;
+      }
+    }
+  }
+  nav {
+    position: relative;
+    height: 70%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: rem(60);
+    text-align: center;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: inline-block;
+    position: relative;
+    height: 100%; 
+    
+    li {
+      display: block;
+      padding-bottom: rem(40);
+      position: relative;
+      
+      a {
+        display: block;
+        position: relative;
+        color: $black;
+        text-decoration: none;
+        overflow: hidden;
+        
+        &:hover:after,
+         &:focus:after,
+         &:active:after {
+           width: 100%;
+         }
+        
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          width: 0%;
+          transform: translateX(-50%);
+          height: rem(2);
+          background: $black;
+          transition: .35s;
+        }
+      }
+    }
+  }
+}
+
+.top-btn {
+  position: absolute;
+  bottom: rem(40);
+  right: rem(50);
+  padding-top: rem(24);
+  z-index: 99;
+  background: transparent url(/images/top-arrow.svg)no-repeat top center;
+
+  span {
+    font-size: rem(24);
+  }
+
+  &:hover {
+    animation: bounce 1.2s infinite cubic-bezier(0.36, 0, 0.66, 1.5); 
+    transition: 0.3s;
+  }
+}
+
+@keyframes bounce {
+ 0% {transform: translateY(0)}
+ 50% {transform: translateY(rem(-10))}
+ 100% {transform: translateY(0)}
 }

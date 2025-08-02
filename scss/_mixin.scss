@@ -1,0 +1,18 @@
+// (max-width) 변수 설정
+$breakpoints-down: (
+  xs: '539.98px',
+  sm: '767.98px',
+  md: '991.98px',
+  lg: '1280px',
+  xl: '1440px'
+);
+
+@mixin media-down($size) {
+    @media (max-width: map-get($breakpoints-down, $size)) {
+        @content;
+    }
+}
+
+@mixin transition($prop: all, $duration: 0.3s, $ease: ease-in-out) {
+  transition: $prop $duration $ease;
+}

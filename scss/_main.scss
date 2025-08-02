@@ -1,5 +1,6 @@
 @use 'variable' as *;
 @use 'function' as *;
+@use 'mixin' as *;
 
 .main {
    &-visual {
@@ -13,6 +14,12 @@
         position: relative;
         padding: 0 rem(60);
         z-index: 2;
+        @include media-down(lg) {
+          padding: 0 rem(40);
+        }
+        @include media-down(md) {
+          padding: 0 rem(20);
+        }
 
         .line {
           overflow: hidden;
@@ -24,19 +31,49 @@
         .year {
           font-size: rem(100);
           letter-spacing: -7.2px;
+          @include transition;
+
+          @include media-down(lg) {
+            font-size: rem(60);
+          }
+          @include media-down(xs) {
+            font-size: rem(42);
+             letter-spacing: -4px;
+          }
         }
         .txt1 {
           font-size: rem(180);
           line-height: 0.8;
+          @include transition;
+          @include media-down(lg) {
+            font-size: rem(100);
+          }
+          @include media-down(xs) {
+            font-size: rem(60);
+          }
 
           span {
             font-style: italic;
             font-size: rem(130);
+            @include transition;
+            @include media-down(lg) {
+              font-size: rem(80);
+            }
+            @include media-down(xs) {
+              font-size: rem(50);
+            }
           }
         }
         .txt2 {
           text-align: right;
           font-size: rem(180);
+          @include transition;
+          @include media-down(lg) {
+              font-size: rem(100);
+          }
+          @include media-down(xs) {
+            font-size: rem(60);
+          }
         }
 
       }
@@ -46,13 +83,29 @@
         opacity: .5;
 
         &.pink {
-            left: rem(1);
-            bottom: rem(1);
+          left: rem(1);
+          bottom: rem(1);
+          @include media-down(xl) {
+            left: rem(-10);
+          }
         }
           &.blue {
             right: rem(1);
             top: 0;
             bottom: rem(4);
+            @include media-down(xl) {
+            right: rem(-50);
+          }
+        }
+
+        img {
+          @include transition;
+          @include media-down(xl) {
+            transform: scale(70%);
+          }
+          @include media-down(xs) {
+            transform: scale(60%);
+          }
         }
       }
     }
@@ -61,8 +114,16 @@
 		width: 100%;
 		overflow: hidden;
 
-    .sec1 {
+    .inner {
+      padding: 0 rem(60);
+      margin: 0 auto;
 
+      @include media-down(md) {
+        padding: 0 rem(40);
+      }
+    }
+
+    .sec1 {
       .pin-wrap {
         width: 100%;
         height: 100vh;
@@ -77,20 +138,71 @@
           text-align: center;
           align-content: center;
 
+          @include media-down(xs) {padding-left: 20px;}
+
+          .me {
+            @include transition;
+            @include media-down(xl) {width: rem(250);}
+            @include media-down(md) {width: rem(180);}
+            @include media-down(sm) {width: rem(120);}
+            @include media-down(xs) {width: rem(90);}
+          }
+
           .obj {
             position: absolute;
+            @include transition;
 
             &1 {
               left: 15%;
               top: 37%;
+              @include media-down(xl) {width: rem(100);}
+              @include media-down(md) {
+                left: 12%;
+                top: 40%;
+                width: rem(80);
+              }
+              @include media-down(sm) {
+                left: 8%;
+                top: 42%;
+              }
+              @include media-down(xs) {
+                left: 0;
+                top: 45%;
+                width: rem(50);
+              }
             }
             &2 {
               right: 20%;
               top: 25%;
+              @include media-down(xl) {width: rem(100);}
+              @include media-down(md) {
+                top: 35%;
+                width: rem(80);
+              }
+              @include media-down(sm) {
+                top: 38%;
+                right: 15%;
+              }
+              @include media-down(xs) {
+                right: 5%;
+                width: rem(52);
+              }
             }
             &3 {
               left: 20%;
               top: 20%;
+              @include media-down(xl) {width: rem(100);}
+              @include media-down(md) {
+                top: 30%;
+                width: rem(70);
+              }
+              @include media-down(sm) {
+                top: 35%;
+              }
+              @include media-down(xs) {
+                top: 37%;
+                width: rem(52);
+              }
             }
           }
         }
@@ -107,6 +219,14 @@
             line-height: 1.5;
             font-weight: 600;
             opacity: 0;
+            @include transition;
+
+            @include media-down(xl) {font-size: rem(32);}
+            @include media-down(sm) {font-size: rem(24);}
+            @include media-down(xs) {
+              font-size: rem(16);
+              padding-right: 10px;
+            }
           }
         }
       }
@@ -116,11 +236,23 @@
         font-size: rem(40);
         font-weight: 600;
         padding: rem(50) rem(60);
+
+        @include media-down(md) {font-size: rem(32);}
+        @include media-down(sm) {
+          font-size: rem(24);
+          padding: rem(40) rem(30);
+        }
       }
 
     .sec2 {
       position: relative;
       height: 100vh;
+
+      @include media-down(sm) {align-content: center;}
+
+      .title {
+        @include media-down(sm) {padding-top: 0;}
+      }
 
       .work-list {
         display: flex;
@@ -130,11 +262,18 @@
         padding-top: 10%;
         padding-left: rem(120);
 
+        @include media-down(sm) {
+          padding-left: rem(40);
+        }
+
         li {
           a {
             width: rem(500);
             display: block;
             color: $black;
+
+            @include media-down(md) {width: rem(400);}
+            @include media-down(sm) {width: rem(300);}
 
             .txt {
               display: flex;
@@ -142,6 +281,7 @@
               justify-content: space-between;
               margin-top: rem(20);
               font-size: rem(18);
+              @include media-down(sm) {font-size: rem(16);}
 
               p {
                 position: relative;
@@ -163,13 +303,19 @@
                 align-items: center;
                 gap: rem(5);
                 font-size: rem(16);
+                @include media-down(sm) {font-size: rem(14);}
               }
 
               .arrow {
                 display: inline-block;
                 width: rem(20);
                 height: rem(20);
-                background: url(/images/ico_blank.svg)no-repeat center;
+                background: url(/images/ico_blank.svg)no-repeat center / contain;
+
+                @include media-down(sm) {
+                  width: rem(16);
+                  height: rem(16);
+                }
               }
             }
 
@@ -208,15 +354,113 @@
     }
 
     .sec3 {
-      canvas {
-        display: block;
-        width: 100%;
-        height: 100%;
-        touch-action: auto;
+      height: 100vh;
+      background: $light-grey;
+
+      .skill-wrap {
+        width: calc(100% - rem(60));
+        height: calc(100vh - rem(150));
+        margin: 0 auto;
+
+        @include media-down(sm) {
+          width: calc(100% - rem(40));
+          height: calc(100% - rem(120));
+        }
+
+        canvas {
+          display: block;
+          width: 100%;
+          height: 100%;
+          touch-action: auto;
+        }
       }
     }
 
+    .sec4 {
+      position: relative;
+      height: 100vh;
+
+      .inner {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        gap: rem(50);
+        @include media-down(sm) {
+          flex-direction: column;
+          gap: rem(20);
+        }
+
+        > div {
+          flex: 1;
+          opacity: 0;
+          transform: translateY(50px);
+          @include media-down(sm) {width: 100%;}
+        }
+      }
+
+      .left {
+        @include media-down(sm) {align-content: center;}
+       p {
+        font-size: rem(80);
+        @include transition();
+        @include media-down(xl) {font-size: rem(60);}
+        @include media-down(lg) {font-size: rem(40);}
+        @include media-down(sm) {font-size: rem(32);}
+       }
+      }
+      .right {
+        .info {
+          font-size: rem(20);
+          @include media-down(lg) {font-size: rem(18);}
+          
+          li {
+            padding-bottom: rem(10);
+
+            &:last-child {
+              padding-bottom: 0;
+            }
+          }
+        }
+        .link-btn {
+          display: flex;
+          gap: rem(40);
+          margin-top: rem(40);
+          @include media-down(xl) {gap: rem(20);}
+          @include media-down(sm) {flex-wrap: wrap;}
+
+          a {
+            width: 50%;
+            max-width: rem(320);
+            text-align: center;
+            font-size: rem(18);
+            color: $black;
+            padding: rem(30) 0;
+            border: 1px solid $black;
+            border-radius: 60px;
+            transition: all .3s;
+            box-shadow: 0 4px 0 rgb(17, 17, 17);   
+
+            @include media-down(xl) {
+              max-width: rem(240);
+              padding: rem(24) 0;
+            }
+             @include media-down(lg) {font-size: rem(16);}
+             @include media-down(sm) {
+              width: 100%;
+             }
+
+            &:active {
+              //box-shadow: 0 1px 2px rgba(0,0,0,0.45); 
+              box-shadow: 0 0 0 rgba(0,0,0,0); 
+              transform: translateY(4px);
+            }
+          }
+        }
+      }
+    }
 	}   
 }
+
+
 
 

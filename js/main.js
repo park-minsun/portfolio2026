@@ -189,6 +189,9 @@
     let width = window.innerWidth;
     let height = window.innerHeight;
 
+    let walls = [];
+    let ground = null;
+
     const engine = Engine.create();
     const world = engine.world;
 
@@ -196,10 +199,8 @@
       canvas: canvas,
       engine: engine,
       options: {
-        width: width,
-        height: height,
         wireframes: false,
-        background: '#f7f7f7',
+        background: 'transparent',
       }
     });
 
@@ -210,7 +211,7 @@
 
     // ✅ 기준 너비 대비 축소 비율 계산
     function getScaleFactor() {
-      const baseWidth = 1024;
+      const baseWidth = 1280;
       return Math.min(1, window.innerWidth / baseWidth);
     }
 
@@ -339,7 +340,11 @@
     function createWalls() {
       const wallThickness = 100;
 
-      const leftWall = Bodies.rectangle(-wallThickness / 2, height / 2, wallThickness, height * 2, {
+      // 기존 벽 제거
+      walls.forEach(w => Composite.remove(world, w));
+      walls = [];
+
+        const leftWall = Bodies.rectangle(-wallThickness / 2, height / 2, wallThickness, height * 2, {
         isStatic: true
       });
 
@@ -350,21 +355,29 @@
       const ceiling = Bodies.rectangle(width / 2, -wallThickness, width, wallThickness, {
         isStatic: true
       });
-      ceiling.render.fillStyle = '#f7f7f7';
-      ceiling.render.strokeStyle = '#f7f7f7';
-      ceiling.render.lineWidth = 0;
 
-      World.add(world, [leftWall, rightWall, ceiling]);
+      [leftWall, rightWall, ceiling].forEach(w => {
+        w.render.fillStyle = 'transtarent';
+        w.render.strokeStyle = 'transtarent';
+        w.render.lineWidth = 0;
+      });
+
+      walls.push(leftWall, rightWall, ceiling);
+      World.add(world, walls);
     }
 
     // ✅ 바닥 생성
     function createGround() {
-      const ground = Bodies.rectangle(width / 2, height + 50, width, 100, {
+      // 기존 바닥 제거
+      if (ground) Composite.remove(world, ground);
+
+      ground = Bodies.rectangle(width / 2, height + 50, width, 100, {
         isStatic: true
       });
-      ground.render.fillStyle = '#f7f7f7';
-      ground.render.strokeStyle = '#f7f7f7';
+      ground.render.fillStyle = 'transparent';
+      ground.render.strokeStyle = 'transparent';
       ground.render.lineWidth = 0;
+
       Composite.add(world, ground);
     }
 
@@ -396,7 +409,9 @@
 
       // 도형 리셋 및 재생성
       clearShapes();
-      //createShapes();
+      createShapes();
+      createWalls();   
+      createGround();   
     }
 
     // ✅ 초기 실행
@@ -416,10 +431,34 @@
 
 ScrollTrigger.create({
   trigger: '.sec3',
-  start: 'top center', // 화면 중간에 .sec3 top이 닿으면
-  once: true, // 한 번만 실행 (원한다면 제거해도 됨)
+  start: 'top center', 
+  once: true, // 한 번만 실행 
   onEnter: () => {
     clearShapes();
     createShapes();
   }
 });
+
+
+// sec4 스크롤 트리거
+
+gsap.timeline({
+  scrollTrigger: {
+    trigger: ".sec4",
+    start: "top center", 
+    toggleActions: "play none none none",
+    // markers: true, 
+    }
+})
+.to(".left", {
+  y: 0,
+  opacity: 1,
+  duration: 0.8,
+  ease: "power2.out"
+})
+.to(".right", {
+  y: 0,
+  opacity: 1,
+  duration: 0.8,
+  ease: "power2.out"
+}, "-=0.4"); // 이전 애니메이션이 끝나기 0.4초 전에 시작

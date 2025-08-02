@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>2025 PORTFOLIO</title>
 	<link rel="stylesheet" href="/css/style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <!-- Lottie -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.0/lottie.min.js"></script>
   <!-- GSAP -->
@@ -13,6 +14,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+  <script src="/js/common.js" defer></script>
   <script src="/js/main.js" defer></script>
 </head>
 
@@ -26,11 +28,24 @@
 				<ul>
 					<li><a href="" data-text="Design"><span>Design</span></a></li>
 					<li><a href="" data-text="Publishing"><span>Publishing</span></a></li>
-					<li><a href="" data-text="Resume"><span>Resume</span></a></li>
+					<li><a href="https://power-plutonium-b90.notion.site/36ad872075d34cc684955c2e4938421b" data-text="Resume" target="_blank"><span>Resume</span></a></li>
 				</ul>
 			</nav>
 		</div>
+    <a href="javascript:;" class="menu-btn" id="toggle"><span class="top"></span><span class="middle"></span><span class="bottom"></span>
+    </a>
 	</header>
+  
+  <div class="overlay" id="overlay">
+    <nav class="overlay-menu en2">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Work</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
 	<div class="container">
 		<div class="main-cont">
 			<div class="main-visual">
@@ -52,7 +67,7 @@
       <section class="sec1">
         <div class="pin-wrap">
           <div class="left">
-            <img src="./images/me.png" alt="">
+            <img class="me" src="./images/me.png" alt="">
             <div id="lottie1" class="obj obj1"></div>
             <div id="lottie2" class="obj obj2"></div>
             <div id="lottie3" class="obj obj3"></div>
@@ -135,7 +150,37 @@
 
       <section class="sec3">
         <h2 class="title">SKILLS</h2>
-        <canvas id="world"></canvas>
+        <div class="skill-wrap">
+          <canvas id="world"></canvas>
+        </div>
+      </section>
+
+      <section class="sec4">
+        <div class="inner">
+          <div class="left">
+            <p>
+              Thank you for <br>
+              reviewing my portfolio <br>
+              I look forward to <br>
+              connecting with you!
+            </p>
+          </div>
+          <div class="right">
+            <ul class="info">
+              <li>Park Min Sun</li>
+              <li>+82&#41; 10-4005-2540</li>
+              <li>io1203@naver.com</li>
+            </ul>
+            <div class="link-btn">
+              <a href="javscript:;">view resume</a>
+              <a href="javscript:;">view github</a>
+            </div>
+          </div>
+        </div>
+
+        <button class="top-btn">
+          <span class="en2">TOP</span>
+        </button>
       </section>
 		</div>
 	</div>
