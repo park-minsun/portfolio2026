@@ -77,7 +77,7 @@
     renderer: 'svg',
     loop: false,
     autoplay: false,
-    path: '/images/lottie/vector1.json'
+    path: './images/lottie/vector1.json'
   });
 
   const lottie2 = lottie.loadAnimation({
@@ -85,7 +85,7 @@
     renderer: 'svg',
     loop: false,
     autoplay: false,
-    path: '/images/lottie/vector2.json'
+    path: './images/lottie/vector2.json'
   });
 
   const lottie3 = lottie.loadAnimation({
@@ -93,7 +93,7 @@
     renderer: 'svg',
     loop: false,
     autoplay: false,
-    path: '/images/lottie/vector3.json'
+    path: './images/lottie/vector3.json'
   });
 
   // 2. ScrollTrigger로 순차 재생
