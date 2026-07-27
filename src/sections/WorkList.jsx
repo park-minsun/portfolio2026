@@ -27,7 +27,7 @@ export default function WorkList() {
         },
       })
 
-      gsap.set(cursor, { xPercent: -50, yPercent: -130 })
+      gsap.set(cursor, { xPercent: -50, yPercent: -50 })
     }, section)
 
     const handlePointerMove = (e) => {
@@ -62,23 +62,25 @@ export default function WorkList() {
       <div className="cursor">
         <span className="circle"></span>
       </div>
-      <ul className="work-list">
-        {WORK_ITEMS.map((item) => (
-          <li key={item}>
-            <a href="#">
-              <div className="img">
-                <img src={thumbImg} alt="" />
-              </div>
-              <div className="txt">
-                <p>제목입니다.</p>
-                <span>
-                  View More <i className="arrow"></i>
-                </span>
-              </div>
-            </a>
-          </li>
-        ))}
-      </ul>
+      <div className="work-list-wrap">
+        <ul className="work-list">
+          {WORK_ITEMS.map((item) => (
+            <li key={item}>
+              <a href="#">
+                <div className="img">
+                  <img src={thumbImg} alt="" />
+                </div>
+                <div className="txt">
+                  <p>제목입니다.</p>
+                  <span>
+                    View More <i className="arrow"></i>
+                  </span>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   )
 }
